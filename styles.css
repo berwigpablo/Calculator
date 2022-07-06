@@ -1,0 +1,114 @@
+body, html{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(236, 236, 236);
+    height: 100%;
+    width: 100%;
+}
+
+@font-face {
+    font-family: 'Calculator Font';
+    src: url(./new-font/Rajdhani/Rajdhani-Bold.ttf);
+}
+
+@font-face {
+    font-family: 'Button Font';
+    src: url(./new-font/Rajdhani/Rajdhani-SemiBold.ttf);
+}
+
+#container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap:wrap;
+    flex-direction: column;
+    height: 590px;
+    width: 405px;
+    border: 2px solid black;
+    padding: 0 5px;
+    box-shadow: 2px 2px 0 0;
+    background-color: silver;
+    border-radius: 5px;
+}
+
+#display{
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    flex-direction: column;
+    font-family: 'Calculator Font';
+    height: 110px;
+    width: 395px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: rgb(80, 163, 129);
+    box-shadow: 3px 3px 0 0;
+    border: 1px solid black;    
+}
+
+#displaySmall{
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+#displayVisor{
+    font-size: 30px;
+    font-weight: bold;
+    margin: 10px 20px;
+}
+
+#display-spacing{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+    width: 400px;
+}
+
+#buttons{
+    margin-bottom: -5px;
+}
+
+.button-spacing{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+    width: 400px;
+}
+
+.button{
+    height: 85px;
+    width: 97px;
+    box-shadow: 2px 2px 0 0;
+    background-color: rgb(223, 223, 223);
+    font-size: 20px;
+    border-radius: 5px;
+    font-weight: 500;
+    font-family: 'Button Font';
+}
+
+#clear, #delete{
+    width: 198px;
+    height: 80px;
+}
+
+#clear{
+    background-color: rgb(74, 228, 202);
+}
+
+#delete{
+    background-color: rgb(255, 64, 64);
+}
+
+#equals{
+    background-color: rgb(75, 75, 253);
+}
+
+.operator, #equals, #dot{
+    background-color: rgb(253, 99, 43);
+    font-size: 25px;
+}
