@@ -34,7 +34,7 @@ body, html{
 
 #display{
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
     align-items: flex-end;
     flex-direction: column;
     font-family: 'Calculator Font';
@@ -51,17 +51,16 @@ body, html{
 #displaySmall{
     font-size: 20px;
     font-weight: bold;
-    margin-right: 20px;
+    margin: 0 12px 20px 0;
     letter-spacing: 1px;
 }
 
-#displayLarge{
-    display:flex;
+#displayLarge span{
+    margin: 10px 5px 0 0;
 }
 
-#displayLarge span{
-    margin: 10px 20px -5px 0;
-    height: 58px;
+#displayFirst{
+    margin: 0 20px 5px 0;
 }
 
 .displayVisor{
@@ -72,8 +71,9 @@ body, html{
 
 #display-spacing{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    flex-direction: column;
     height: 120px;
     width: 400px;
 }
