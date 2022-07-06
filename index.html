@@ -6,60 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./styles.css">
+    <script src="./script.js" defer></script>
 </head>
 <body>
 
     <div id="container">
 
         <div id="display-spacing">
-        <div id="display">
-            <p id="displaySmall">5 + 2</p>
-            <p id="displayVisor">5 + 2</p>
-        </div>
+            <div id="display">
+                <p id="displaySmall"></p>
+                <div id="displayLarge">
+                <span id="displayFirst" class="displayVisor"></span>
+                <span id="displayOperator" class="displayVisor"></span>
+                <span id="displaySecond" class="displayVisor"></span>
+                </div>
+            </div>
         </div>
         <div id="buttons">
-        <div class="button-spacing">
-        <button id="clear" class="button top-rows">Clear</button>
-        <button id="delete" class="button top-rows">Delete</button>
+            <div class="button-spacing">
+            <button id="clear" class="button top-rows">Clear</button>
+            <button id="delete" class="button top-rows">Delete</button>
         </div>
 
         <div class="button-spacing">
-        <button id="one" class="button top-rows">1</button>
-        <button id="two" class="button top-rows">2</button>
-        <button id="three" class="button top-rows">3</button>
-        <button id="plus" class="button top-rows operator">+</button>
+            <button id="one" class="button top-rows number">1</button>
+            <button id="two" class="button top-rows number">2</button>
+            <button id="three" class="button top-rows number">3</button>
+            <button id="plus" class="button top-rows operator">+</button>
         </div>
 
         <div class="button-spacing">
-        <button id="four" class="button top-rows">4</button>
-        <button id="five" class="button top-rows">5</button>
-        <button id="six" class="button top-rows">6</button>
-        <button id="minus" class="button top-rows operator">-</button>
+            <button id="four" class="button top-rows number">4</button>
+            <button id="five" class="button top-rows number">5</button>
+            <button id="six" class="button top-rows number">6</button>
+            <button id="minus" class="button top-rows operator">-</button>
         </div>
         
         <div class="button-spacing">
-        <button id="seven" class="button top-rows">7</button>
-        <button id="eight" class="button top-rows">8</button>
-        <button id="nine" class="button top-rows">9</button>
-        <button id="divide" class="button top-rows operator">÷</button>
+            <button id="seven" class="button top-rows number">7</button>
+            <button id="eight" class="button top-rows number">8</button>
+            <button id="nine" class="button top-rows number">9</button>
+            <button id="divide" class="button top-rows operator">÷</button>
         </div>
 
         <div class="button-spacing">
-        <button id="dot" class="button bottom-row" style="background-color: rgb(243, 243, 77);">.</button>
-        <button id="zero" class="button bottom-row">0</button>
-        <button id="equals" class="button bottom-row">=</button>
-        <button id="multiply" class="button bottom-row operator">×</button>
+            <button id="dot" class="button bottom-row number" style="background-color: rgb(243, 243, 77);">.</button>
+            <button id="zero" class="button bottom-row number">0</button>
+            <button id="equals" class="button bottom-row operator">=</button>
+            <button id="multiply" class="button bottom-row operator">×</button>
         </div>
         </div>
 
-    </div>
-    
+    </div> 
 </body>
-<script>
-    let display = document.querySelectorAll('button');
-
-    console.log(display);
-
-    display.forEach(button => button.addEventListener('click', (e) => console.log(e)));
-</script>
 </html>
