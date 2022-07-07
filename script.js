@@ -55,6 +55,11 @@ function register(e){
         num = e.key;
     }
 
+    if(displayFirst.textContent.length + displayOperator.textContent.length + displaySecond.textContent.length > 22){
+        displaySmall.textContent = 'MAX DIGITS ENTERED';
+        return;
+    }
+
     if(displayOperator.textContent){
         if(num === '.' && displaySecond.textContent.split('').includes('.')){
             return
