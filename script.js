@@ -6,22 +6,71 @@ let smallDisplay = document.querySelector('p');
 let displayFirst = document.getElementById('displayFirst');
 let displayOperator = document.getElementById('displayOperator');
 let displaySecond = document.getElementById('displaySecond');
+let keys = document.addEventListener('keydown', filterKeyboard);
 
 clear.addEventListener('click', clearDisplay);
 dlt.addEventListener('click', deleteDisplay);
 numbers.forEach(number => number.addEventListener('click', register));
 operators.forEach(operator => operator.addEventListener('click', operate));
-//operators.forEach(operator => operator.addEventListener('click', display));
 
-function register(e){
-    if(displayOperator.textContent){
-        displaySecond.textContent += e.target.textContent;
-    } else{
-        displayFirst.textContent += e.target.textContent;
-    } 
+function filterKeyboard(e){
+
+    console.log(e);
+    console.log(e.key);
+
+    if(e.key === 'Escape'){
+        clearDisplay();
+    }
+    if(e.key === 'Backspace'){
+        deleteDisplay();
+    }
+
+    let keyPress = e.key;
+    let numArray = [...'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ','];
+    let operatorArray = [...'+', '-', '/', '*', 'Enter'];
+    
+    if(numArray.includes(keyPress)){
+        register(e);
+    } else if(operatorArray.includes(keyPress)){
+        operate(e);
+    }
 }
 
-function clearDisplay(e){
+function register(e){
+    let num = '';
+
+    if(e.key === undefined){
+        num = e.target.textContent;
+    }else if(e.key === '*'){
+        num = '×';
+        console.log(num);
+    }else if(e.key === '/'){
+        num = '÷';
+        console.log(num);
+    }else if(e.key === 'Enter'){
+        num = '=';
+    }else if(e.key === ','){
+        num = '.';
+    }else{
+        num = e.key;
+    }
+
+    if(displayOperator.textContent){
+        if(num === '.' && displaySecond.textContent.split('').includes('.')){
+            return
+        } else{
+            displaySecond.textContent += num;
+        }
+    } else{
+        if(num === '.' && displayFirst.textContent.split('').includes('.')){
+            return
+        } else{
+            displayFirst.textContent += num;
+        }
+    }
+}
+
+function clearDisplay(){
     if(!displayFirst.textContent && !displaySecond.textContent){
         smallDisplay.textContent = '';
     }
@@ -51,20 +100,24 @@ function deleteDisplay(){
     }   
 }
 
-function display(e){
-
-    if(displayOperator.textContent){
-        smallDisplay.textContent = `${displayFirst.textContent} ${displayOperator.textContent} ${displaySecond.textContent}`;
-    } else{
-        displayOperator.textContent = e.target.textContent; 
-    }
-}
-
 function operate(e){
+    let num = '';
 
-    if(!displayOperator.textContent && e.target.textContent !== '=' && displayFirst.textContent){
+    if(e.key === undefined){
+        num = e.target.textContent;
+    }else if(e.key === '*'){
+        num = '×';
+    }else if(e.key === '/'){
+        num = '÷';
+    }else if(e.key === 'Enter'){
+        num = '=';
+    }else{
+        num = e.key;
+    }
 
-        displayOperator.textContent = e.target.textContent;
+    if(!displayOperator.textContent && num !== '=' && displayFirst.textContent){
+
+        displayOperator.textContent = num;
 
     } else if(displayOperator.textContent === '+'){
     
@@ -72,6 +125,7 @@ function operate(e){
         displayFirst.textContent = Number(displayFirst.textContent) + Number(displaySecond.textContent);
         displayOperator.textContent = '';
         displaySecond.textContent = '';
+        decimalCount(displayFirst);
 
     } else if(displayOperator.textContent === '-'){
 
@@ -79,26 +133,30 @@ function operate(e){
         displayFirst.textContent = Number(displayFirst.textContent) - Number(displaySecond.textContent);
         displayOperator.textContent = '';
         displaySecond.textContent = '';
+        decimalCount(displayFirst);
 
     } else if(displayOperator.textContent === '÷'){
 
         if(displaySecond.textContent === '0'){
-            displayFirst.textContent = 'nope';
+            displayFirst.textContent = 'lmfao';
             displaySecond.textContent = '';
             displayOperator.textContent = '';
 
             setTimeout(clearDisplay, 200);
+
         }else if(displaySecond.textContent === ''){
             smallDisplay.textContent = `${displayFirst.textContent} ${displayOperator.textContent}`;
             displayFirst.textContent = Number(displayFirst.textContent) / 1;
             displayOperator.textContent = '';
             displaySecond.textContent = '';
+            decimalCount(displayFirst);
 
         }else{
             smallDisplay.textContent = `${displayFirst.textContent} ${displayOperator.textContent} ${displaySecond.textContent}`;
             displayFirst.textContent = Number(displayFirst.textContent) / Number(displaySecond.textContent);
             displayOperator.textContent = '';
             displaySecond.textContent = '';
+            decimalCount(displayFirst);
         }
 
     } else if(displayOperator.textContent === '×'){
@@ -107,22 +165,22 @@ function operate(e){
         displayFirst.textContent = Number(displayFirst.textContent) * Number(displaySecond.textContent);
         displayOperator.textContent = '';
         displaySecond.textContent = '';
-
-    }
-
-    if(e.target.textContent !== '='){
-        displayOperator.textContent = e.target.textContent;
-    }
-
-    if(displayFirst.textContent.split('').includes('.') && !displayOperator.textContent){
         decimalCount(displayFirst);
     }
+
+    if(num !== '='){
+        displayOperator.textContent = num;
+    }
+
 }
 
 function decimalCount(num){
-    let decCount = num.textContent.split('.');
+    if(displayFirst.textContent.split('').includes('.')){
+        
+        let decCount = num.textContent.split('.');
 
-    if(decCount[1].length > 4){
-        displayFirst.textContent = Number(displayFirst.textContent).toFixed(4);
+        if(decCount[1].length > 4){
+            displayFirst.textContent = Number(displayFirst.textContent).toFixed(4);
+        }
     }
 }

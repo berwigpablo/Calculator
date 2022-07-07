@@ -2,6 +2,7 @@ body, html{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     background-color: rgb(236, 236, 236);
     height: 100%;
     width: 100%;
@@ -121,4 +122,42 @@ body, html{
 .operator, #equals, #dot{
     background-color: rgb(253, 99, 43);
     font-size: 25px;
+}
+
+#instruction{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    font-family: 'Calculator Font';
+    width:370px;
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+#instruction ul{
+    list-style-image: url('./window.png');
+    padding: 0;
+}
+
+#lione{
+    margin-bottom:10px;
+}
+
+#instruction #esc{
+    background-color: rgb(74, 228, 202);
+    padding:4px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 0 0;
+}
+
+#instruction #backspace{
+    background-color: rgb(255, 64, 64);
+    padding:4px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 0 0;
+}
+
+li#lione::marker{
+    box-shadow: 2px 2px 0 0;
 }
